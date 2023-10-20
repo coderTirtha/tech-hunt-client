@@ -31,7 +31,7 @@ const Header = () => {
                         </label>
                     </div>
                     <button className='btn'>Login</button>
-                    <button className='btn btn-outline'>Register</button>
+                    <button className='btn btn-outline text-blue'>Register</button>
                 </div>
                 <div className='md:hidden'>
                     <button className='btn' onClick={() => setOpen(true)}><AiOutlineMenu /></button>

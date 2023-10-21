@@ -6,7 +6,7 @@ import { Link, NavLink } from 'react-router-dom';
 const Header = () => {
     const [open, setOpen] = useState(true);
     const links = <>
-        <li><NavLink to={'/'}>Home</NavLink></li>
+        <li className='hover:bg-light-white'><NavLink to={'/'}>Home</NavLink></li>
         <li><NavLink to={'/addProduct'}>Add Product</NavLink></li>
     </>
     return (
@@ -37,7 +37,7 @@ const Header = () => {
                     <button className='btn' onClick={() => setOpen(true)}><AiOutlineMenu /></button>
                 </div>
             </div>
-            <div className={`${open ? "w-[100vw]" : "w-0"} duration-300 md:hidden h-screen top-0 absolute bg-[#28282869] z-1000`}>
+            <div className={`${open ? "w-[100vw]" : "w-0"} ${open ? "overflow-y-hidden" : ''} duration-300 md:hidden h-screen top-0 fixed bg-[#28282869] z-1000`}>
                 <div className={`${open ? 'w-72' : 'w-0'} h-screen bg-blue`}>
                     <button className={`bg-gray-300 p-4 rounded-md ${!open && 'scale-0'} duration-300 m-2`} onClick={() => setOpen(false)}><RxCross1 /></button>
                     <div className={`${!open && 'scale-0'} duration-200 p-2 flex flex-col justify-between h-[80vh]`}>
@@ -55,8 +55,8 @@ const Header = () => {
                                 See Cart
                             </button>
                             <div className='flex justify-between gap-2'>
-                                <Link to={'/login'}><button className='btn flex-1'>Login</button></Link>
-                                <Link to={'/register'}><button className='btn btn-outline flex-1'>Register</button></Link>
+                                <Link to={'/login'} className='flex-1'><button className='btn w-full'>Login</button></Link>
+                                <Link to={'/register'} className='flex-1'><button className='btn btn-outline w-full'>Register</button></Link>
                             </div>
                         </div>
                     </div>

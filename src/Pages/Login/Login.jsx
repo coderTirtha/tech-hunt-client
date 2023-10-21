@@ -19,6 +19,8 @@ const Login = () => {
                     icon: 'success',
                     confirmButtonText: 'Ok'
                 });
+                const formData = e.target;
+                formData.reset();
             })
             .catch(error => {
                 Swal.fire({

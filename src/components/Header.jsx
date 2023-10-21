@@ -1,9 +1,12 @@
-import { useState } from 'react';
-import { AiOutlineMenu, AiOutlineShoppingCart } from 'react-icons/ai';
+import { useContext, useState } from 'react';
+import { AiOutlineMenu } from 'react-icons/ai';
 import { RxCross1 } from 'react-icons/rx';
+import { BiUserCircle } from 'react-icons/bi';
 import logo from '../assets/logo.png';
 import { Link, NavLink } from 'react-router-dom';
+import { AuthContext } from '../Providers/AuthProvider';
 const Header = () => {
+    const { loading, user } = useContext(AuthContext);
     const [open, setOpen] = useState(true);
     const links = <>
         <li className='hover:bg-light-white'><NavLink to={'/'}>Home</NavLink></li>
@@ -30,8 +33,24 @@ const Header = () => {
                             </div>
                         </label>
                     </div>
-                    <Link to={'/login'}><button className='btn'>Login</button></Link>
-                    <Link to={'/register'}><button className='btn btn-outline text-blue'>Register</button></Link>
+                    {
+                        user ?
+                            <Link to={'/profile'}>
+                                <label tabIndex={0} className="btn btn-ghost btn-circle">
+                                    <div className="rounded-full">
+                                        {
+                                            user?.photoURL ?
+                                                <img src={user?.photoURL} alt="" /> :
+                                                <BiUserCircle className='text-3xl' />
+                                        }
+                                    </div>
+                                </label>
+                            </Link> :
+                            <>
+                                <Link to={'/login'}><button className='btn'>Login</button></Link>
+                                <Link to={'/register'}><button className='btn btn-outline text-blue'>Register</button></Link>
+                            </>
+                    }
                 </div>
                 <div className='md:hidden'>
                     <button className='btn' onClick={() => setOpen(true)}><AiOutlineMenu /></button>

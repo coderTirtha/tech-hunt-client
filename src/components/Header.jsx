@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { AiOutlineMenu, AiOutlineShoppingCart } from 'react-icons/ai';
 import { RxCross1 } from 'react-icons/rx';
 import logo from '../assets/logo.png';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 const Header = () => {
     const [open, setOpen] = useState(true);
     const links = <>
@@ -30,8 +30,8 @@ const Header = () => {
                             </div>
                         </label>
                     </div>
-                    <button className='btn'>Login</button>
-                    <button className='btn btn-outline text-blue'>Register</button>
+                    <Link to={'/login'}><button className='btn'>Login</button></Link>
+                    <Link to={'/register'}><button className='btn btn-outline text-blue'>Register</button></Link>
                 </div>
                 <div className='md:hidden'>
                     <button className='btn' onClick={() => setOpen(true)}><AiOutlineMenu /></button>
@@ -55,8 +55,8 @@ const Header = () => {
                                 See Cart
                             </button>
                             <div className='flex justify-between gap-2'>
-                                <button className='btn flex-1'>Login</button>
-                                <button className='btn btn-outline flex-1'>Register</button>
+                                <Link to={'/login'}><button className='btn flex-1'>Login</button></Link>
+                                <Link to={'/register'}><button className='btn btn-outline flex-1'>Register</button></Link>
                             </div>
                         </div>
                     </div>

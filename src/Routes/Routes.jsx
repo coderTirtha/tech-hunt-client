@@ -7,6 +7,7 @@ import Register from "../Pages/Register/Register";
 import MyCart from "../Pages/MyCart/MyCart";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Profile from "../Pages/Profile/Profile";
+import BrandProducts from "../Pages/BrandProducts/BrandProducts";
 
 const router = createBrowserRouter([
     {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
             {
                 path: '/profile',
                 element: <PrivateRoute><Profile></Profile></PrivateRoute>
+            }, 
+            {
+                path: '/products/:name',
+                element: <BrandProducts></BrandProducts>
             }
         ]
     }

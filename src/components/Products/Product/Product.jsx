@@ -3,7 +3,7 @@ import Rating from 'react-rating';
 const Product = ({ product }) => {
     const { name, brand, photo, type, price, description, rating } = product;
     return (
-        <div className="shadow-md rounded-md p-4">
+        <div className="flex flex-col justify-between gap-2 shadow-md rounded-md p-4">
             <div className="relative">
                 <p className="bg-gray-600 bg-opacity-60 text-white absolute px-2 py-1 top-1 right-1 rounded">{brand}</p>
                 <div className='flex justify-center'>
@@ -22,7 +22,10 @@ const Product = ({ product }) => {
                         readonly
                     />
                 </div>
-                <p className="text-gray-500 text-justify">{description.slice(0, 100)}</p>
+                <p className="text-gray-500 text-justify">{description}</p>
+            </div>
+            <div>
+                <button className='btn btn-block'>See details</button>
             </div>
         </div>
     );

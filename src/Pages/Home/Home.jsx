@@ -3,6 +3,8 @@ import Banner from "../../components/Banner/Banner";
 import Brands from "../../components/Branding/Brands";
 import { useEffect, useState } from "react";
 import Products from "../../components/Products/Products";
+import Footer from "../../components/Footer/Footer";
+import Stats from "../../components/Stats/Stats";
 
 const Home = () => {
     const brands = useLoaderData();
@@ -17,6 +19,8 @@ const Home = () => {
             <Banner></Banner>
             <Brands brands={brands}></Brands>
             <Products products={products}></Products>
+            <Stats></Stats>
+            <Footer></Footer>
         </div>
     );
 };

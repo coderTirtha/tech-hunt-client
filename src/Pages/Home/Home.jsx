@@ -10,7 +10,7 @@ const Home = () => {
     const brands = useLoaderData();
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:3000/products')
+        fetch('https://tech-hunt-server-qhyj7wbyw-tirthadas.vercel.app/products')
         .then(res => res.json())
         .then(data => setProducts(data))
     }, [])

@@ -28,7 +28,7 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 const newUser = { name: name, uid: user.uid, email: email, items: [] }
-                fetch('http://localhost:3000/users', {
+                fetch('https://tech-hunt-server-qhyj7wbyw-tirthadas.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

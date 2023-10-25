@@ -19,12 +19,12 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:3000/brands')
+                loader: () => fetch('https://tech-hunt-server-qhyj7wbyw-tirthadas.vercel.app/brands')
             },
             {
                 path: "/addProduct",
                 element: <PrivateRoute><AddProduct></AddProduct></PrivateRoute>,
-                loader: () => fetch('http://localhost:3000/brands')
+                loader: () => fetch('https://tech-hunt-server-qhyj7wbyw-tirthadas.vercel.app/brands')
             },
             {
                 path: '/login',
@@ -37,7 +37,7 @@ const router = createBrowserRouter([
             {
                 path: '/myCart/:uid',
                 element: <PrivateRoute><MyCart></MyCart></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:3000/users/${params.uid}`)
+                loader: ({params}) => fetch(`https://tech-hunt-server-qhyj7wbyw-tirthadas.vercel.app/users/${params.uid}`)
             }, 
             {
                 path: '/profile',
@@ -46,17 +46,17 @@ const router = createBrowserRouter([
             {
                 path: '/products',
                 element: <PrivateRoute><Products></Products></PrivateRoute>,
-                loader: () => fetch('http://localhost:3000/products')
+                loader: () => fetch('https://tech-hunt-server-qhyj7wbyw-tirthadas.vercel.app/products')
             },
             {
                 path: '/product/:id',
-                loader: ({params}) => fetch(`http://localhost:3000/product/${params.id}`),
+                loader: ({params}) => fetch(`https://tech-hunt-server-qhyj7wbyw-tirthadas.vercel.app/product/${params.id}`),
                 element: <PrivateRoute><ProductsDetails></ProductsDetails></PrivateRoute>
             },
             {
                 path: '/products/:name',
                 element: <BrandProducts></BrandProducts>,
-                loader: ({params}) => fetch(`http://localhost:3000/products/${params.name}`)
+                loader: ({params}) => fetch(`https://tech-hunt-server-qhyj7wbyw-tirthadas.vercel.app/products/${params.name}`)
             }
         ]
     }

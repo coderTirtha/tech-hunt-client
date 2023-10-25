@@ -1,7 +1,8 @@
 import React from 'react';
 import Rating from 'react-rating';
+import { Link } from 'react-router-dom';
 const Product = ({ product }) => {
-    const { name, brand, photo, type, price, description, rating } = product;
+    const { _id, name, brand, photo, price, description, rating } = product;
     return (
         <div className="flex flex-col justify-between gap-2 shadow-md rounded-md p-4">
             <div className="relative">
@@ -25,7 +26,9 @@ const Product = ({ product }) => {
                 <p className="text-gray-500 text-justify">{description}</p>
             </div>
             <div>
-                <button className='btn btn-block'>See details</button>
+                <Link to={`/product/${_id}`}>
+                    <button className='btn btn-block'>See details</button>
+                </Link>
             </div>
         </div>
     );

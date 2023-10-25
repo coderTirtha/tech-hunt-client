@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { Link, useNavigation } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
     const { loading, user, createUser } = useContext(AuthContext);
@@ -12,21 +14,31 @@ const Register = () => {
         const name = form.get('name');
         const email = form.get('email');
         const password = form.get('password');
+        if (password.length < 6) {
+            toast.warn('Password must be at least 6 characters long!');
+            return
+        } else if (!/[A-Z]/.test(password)) {
+            toast.warn('Password should contain at least one Capital letter!');
+            return
+        } else if (!/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(password)) {
+            toast.warn('Password should contain at least one special character!');
+            return
+        }
         createUser(email, password)
             .then(result => {
                 const user = result.user;
-                const newUser = {name: name, uid: user.uid, email: email, items: []}
+                const newUser = { name: name, uid: user.uid, email: email, items: [] }
                 fetch('http://localhost:3000/users', {
                     method: 'POST',
                     headers: {
-                        'content-type' : 'application/json'
+                        'content-type': 'application/json'
                     },
                     body: JSON.stringify(newUser)
                 })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data)
-                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                    })
                 Swal.fire({
                     title: "Success",
                     text: "User profile created successfully!",
@@ -44,6 +56,7 @@ const Register = () => {
                     confirmButtonText: 'Ok'
                 });
             })
+
     }
     return (
         <div>
@@ -79,7 +92,7 @@ const Register = () => {
                                     <label className="label">
                                         <span className="label-text">Password</span>
                                     </label>
-                                    <input type="password" name="password" placeholder="Password" className="input input-bordered" required />
+                                    <input type="text" name="password" placeholder="Password" className="input input-bordered" required />
                                 </div>
                                 <div className="form-control mt-6">
                                     <button className="btn btn-outline">Register</button>
@@ -88,6 +101,7 @@ const Register = () => {
                             </form>
                         </div>
             }
+            <ToastContainer />
         </div>
     );
 };

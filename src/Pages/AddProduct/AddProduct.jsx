@@ -15,7 +15,7 @@ const AddProduct = () => {
         const description = form.get('description');
         const newProduct = { name, brand, photo, price, type, rating, description }
         console.log(newProduct)
-        fetch('https://tech-hunt-server-qhyj7wbyw-tirthadas.vercel.app/products', {
+        fetch('https://tech-hunt-server.vercel.app/products', {
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'

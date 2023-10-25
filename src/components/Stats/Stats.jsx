@@ -4,12 +4,12 @@ const Stats = () => {
     const [products, setProducts] = useState([]);
     const [brands, setBrands] = useState([]);
     useEffect(()=> {
-        fetch('https://tech-hunt-server-qhyj7wbyw-tirthadas.vercel.app/products')
+        fetch('https://tech-hunt-server.vercel.app/products')
         .then(res => res.json())
         .then(data => setProducts(data))
     }, []);
     useEffect(() => {
-        fetch('https://tech-hunt-server-qhyj7wbyw-tirthadas.vercel.app/brands')
+        fetch('https://tech-hunt-server.vercel.app/brands')
         .then(res => res.json())
         .then(data => setBrands(data))
     }, []);

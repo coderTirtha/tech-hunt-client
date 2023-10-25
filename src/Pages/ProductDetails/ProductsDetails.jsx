@@ -11,7 +11,7 @@ const ProductsDetails = () => {
         const quantityField = document.getElementById('quantity');
         const quantity = quantityField.value;
         const newItem = { name, brand, price, photo, quantity }
-        fetch(`https://tech-hunt-server-qhyj7wbyw-tirthadas.vercel.app/users/${user.uid}`, {
+        fetch(`https://tech-hunt-server.vercel.app/users/${user.uid}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
